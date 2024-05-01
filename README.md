@@ -8,56 +8,38 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
 
 ---
 
-## Calendario Clases
+## Contenidos
 
-- Semana 00: Presentación del curso (10 de agosto): [`[Presentación]`](https://mebucca.github.io/sdd_sol186s/slides/class_0/class_0#1) 
+1. **Week 1: Introduction**
+    - Torche, Florencia. 2015. "Analyses of Intergenerational Mobility: An Interdisciplinary Review". The ANNALS of the American Academy of Political and Social Science. 657. 37-62. [Paper](readings/torche_2015.pdf)
 
-- Semana 01: Aspectos normativos del debate: desigualdad de oportunidades y de resultados (17 de agosto): [`[Presentación]`](https://mebucca.github.io/sdd_sol186s/slides/class_1/class_1#1)  [`[Grusky & Hill 2017]`](readings/Grusky_Hill_2017.pdf) [`[Roemer 1998]`](readings/Roemer_1998.pdf) [`[Frank 2016]`](readings/Frank_2016.pdf) [`[Matamala 2019]`](readings/Matamala_2019.pdf)
+2. **Week 2: The usual, but recent and better**
+    - Mitnik, Pablo A., Victoria Bryant, and Michael Weber. 2019. “The Intergenerational Transmission of Family-Income Advantages in the United States.”, Sociological Science 6: 380-415.
+    - Cheng, S., & Song, X. 2019. "Linked Lives, Linked Trajectories: Intergenerational Association of Intragenerational Income Mobility", American Sociological Review, 84(6), 1037-1068. 
+    - Ian Lundberg. 2020. "Does Opportunity Skip Generations? Reassessing Evidence From Sibling and Cousin Correlations", Demography 1; 57 (4): 1193–1213.
 
-- Semana 02:  Pobreza: conceptos y medición (24 de agosto):[`[Presentación]`](slides/class_2/class_2.pdf) [`[Gasparini 2013]`](readings/Gasparini_2013.pdf)[`[Brady 2019]`](readings/Brady_2019.pdf)[`[Cepal 2021]`](https://drive.google.com/file/d/1T0zHC0od-473Gd8HNbPLx2_RPQ-2NIkh/view)
+3. **Week 3: Critics to the usual**
+    - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115.
+    - Zhou, X. 2019. "Equalization or Selection? Reassessing the Meritocratic Power of a College Degree in Intergenerational Income Mobility". American Sociological Review, 84(3), 459-485.
+    - Engzell, P., & Mood, C. 2023. "Understanding Patterns and Trends in Income Mobility through Multiverse Analysis", American Sociological Review, 88(4), 600-626.
 
-- Semana 03: Pobreza: tendencias y debates (31 de agosto): [`[Presentación]`](slides/class_3/class_3.pdf) [`[Han 2018]`](readings/Han_2018.pdf)[`[Han 2022]`](readings/Han_2022.pdf)
+4. **Week 4: Mobility in the long run**
+    - Song, X., Massey, C. G., Rolf, K. A., Ferrie, J. P., Rothbaum, J. L., & Xie, Y. 2020. "Long-term decline in intergenerational mobility in the United States since the 1850s". Proceedings of the National Academy of Sciences of the United States of America, 117(1).
+    - Clark G. 2023. "The inheritance of social status: England, 1600 to 2022". Proceedings of the National Academy of Sciences of the United States of America, 120(27).
+    - Wen, F., Wang, E. H., & Hout, M. 2024. "Social mobility in the Tang Dynasty as the Imperial Examination rose and aristocratic family pedigree declined", 618-907 CE. Proceedings of the National Academy of Sciences of the United States of America, 121(4).
 
-- Semana 04: Desigualdad económica: conceptos y medición  (7 de septiembre): [`[Gasparini 2013]`](readings/Gasparini_2013.pdf) [`[PNUD 2017]`](readings/Pnud_2017.pdf)
+5. **Week 5: Mobility Networks**
+    - Villarreal, Andrés. 2020. “The U.S. Occupational Structure: A Social Network Approach.” Sociological Science 7: 187-221.
+    - Cheng, Siwei & Park, Barum. 2020. "Flows and Boundaries: A Network Approach to Studying Occupational Mobility in the Labor Market. American Journal of Sociology". 126. 577-631. 10.1086/712406.
+    - Lin, K. H., & Hung, K. 2022. "The Network Structure of Occupations: Fragmentation, Differentiation, and Contagion". AJS; American journal of sociology, 127(5), 1551–1601.
 
-- Semana 05: Desigualdad económica: tendencias y debates  (14 de septiembre): [`[Araujo 2009]`](readings/Araujo_2009.pdf) [`[PNUD 2017]`](readings/Pnud_2017.pdf)
+6. **Week 6: Mobility and Sociogenomics**
+    - Belsky, D. W., Domingue, B. W., Wedow, R., Arseneault, L., Boardman, J. D., Caspi, A., Conley, D., Fletcher, J. M., Freese, J., Herd, P., Moffitt, T. E., Poulton, R., Sicinski, K., Wertz, J., & Harris, K. M. 2018. "Genetic analysis of social-class mobility in five longitudinal studies". Proceedings of the National Academy of Sciences of the United States of America, 115(31).
+    - Engzell, Per & Tropf, Felix. 2019. "Heritability of education rises with intergenerational mobility". Proceedings of the National Academy of Sciences. 116.
+    - Hannu Lahtinen, Kaarina Korhonen, Pekka Martikainen, Tim Morris. 2023. "Polygenic Prediction of Education and Its Role in the Intergenerational Transmission of Education: Cohort Changes Among Finnish Men and Women Born in 1925–1989". Demography; 60 (5): 1523–1547.
 
-- Semana 06: Movilidad social: conceptos y medición   (21 de septiembre): [`[Presentación]`](https://mebucca.github.io/sdd_sol186s/slides/class_6/class_6#1) [`[Torche 2014]`](readings/Torche_2014.pdf) [`[Hout 2014]`](readings/Hout_2014.pdf) [`[Breen 2010]`](readings/Breen_2010.pdf) [`[Goldthorpe 2013]`](readings/Goldthorpe_2013.pdf) 
-
-- Semana 07: Movilidad social: tendencias y debates (28 de septiembre): [`[Presentación]`](https://mebucca.github.io/sdd_sol186s/slides/class_7/class_7#1) [`[Breen 2020]`](readings/Breen_2020.pdf) [`[Chetty 2017]`](readings/Chetty_2017.pdf) [`[Zimmerman 2019]`](readings/Zimmerman_2019.pdf) [`[Chetty 2022]`](readings/Chetty_2022.pdf)
-
-- Semana 08: Desigualdad y movilidad  (5 de octubre): [`[Presentación]`](https://mebucca.github.io/sdd_sol186s/slides/class_8/class_8#1) [`[Corak 2013]`](readings/Corak_2013.pdf) [`[DiPrete 2020]`](readings/DiPrete_2020.pdf) [`[Torche 2005]`](readings/Torche_2005.pdf) [`[Reardon 2011]`](readings/Reardon_2011.pdf)  
-
-- Semana 09: Creencias sobre la desigualdad (11 de octubre):  [`[Presentación]`](https://mebucca.github.io/sdd_sol186s/slides/class_9/class_9#1) [`[Mijs 2021]`](readings/Mijs_2021.pdf) [`[Molina 2019]`](readings/Molina_2019.pdf) [`[Starmans 2017]`](readings/Starmans_2017.pdf) [`[Trump 2020]`](readings/Trump_2020.pdf)  
-
-- Semana 09: Consecuencias de la desigualdad (19 de octubre): [`[Jencks 2002]`](readings/Jencks_2002.pdf) [`[VandeWerfhorst 2012]`](readings/VandeWerfhorst_2012.pdf) [`[Cote 2015]`](readings/Cote_2015.pdf) [`[Scheve 2017]`](readings/Scheve_2017.pdf) [`[Nishi 2015]`](readings/Nishi_2015.pdf)  
-
-- Semana 11: Redistribución y Estado de bienestar: antecedentes históricos (26 de octubre):
-
-- Semana 12: Redistribución y Estado de bienestar: problemas contemporáneos (2 de noviembre):
-
-- Semana 13: Redistribución y Estado de bienestar: La paradoja de la redistribución (9 de noviembre):
-
-- Semana 14: Redistribución y Estado de bienestar: Preferencias redistributivas (16 de noviembre):
-
-- Semana 15: Cierre (23 de noviembre):
-
-
----
-
-## Evaluaciones
-
-#### Presentaciones individuales:
-
-- Instrucciones: [`[Instrucciones]`](files/protocolo.pdf) 
-
-#### Tareas
-
-- Asignación Trabajo 1: 
-- Asignación Trabajo 2: [`[Trabajo 2]`](hw/t2.pdf)
-
-
-#### Trabajo Final
-
-- Asignación Trabajo final: 
+7. **Week 7: Mobility Effects**
+    - Zang, E., Sobel, M. E., & Luo, L. 2023. "The mobility effects hypothesis: Methods and applications". Social science research, 110.
+    - Wei, L., & Xie, Y. 2022 (preprint). "Social Mobility as Causal Intervention".
+    - Breen, Richard, and John Ermisch. 2024. “The Effects of Social Mobility.” Sociological Science 11: 467-488.
 
