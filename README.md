@@ -10,13 +10,13 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
 
 ## Contenidos
 
-1. **Week 1: Introduction**
+1. **Week 1: Introducción**
     - Torche, Florencia. 2015. "Analyses of Intergenerational Mobility: An Interdisciplinary Review". The ANNALS of the American Academy of Political and Social Science. 657. 37-62. [Paper](readings/torche_2015.pdf)
 
-2. **Week 2: The usual, but recent and better**
-    - Mitnik, Pablo A., Victoria Bryant, and Michael Weber. 2019. “The Intergenerational Transmission of Family-Income Advantages in the United States.”, Sociological Science 6: 380-415.
-    - Cheng, S., & Song, X. 2019. "Linked Lives, Linked Trajectories: Intergenerational Association of Intragenerational Income Mobility", American Sociological Review, 84(6), 1037-1068. 
-    - Ian Lundberg. 2020. "Does Opportunity Skip Generations? Reassessing Evidence From Sibling and Cousin Correlations", Demography 1; 57 (4): 1193–1213.
+2. **Week 2: Movilidad intra, inter and multi generacional**
+    - Mitnik, Pablo A., Victoria Bryant, and Michael Weber. 2019. “The Intergenerational Transmission of Family-Income Advantages in the United States.”, Sociological Science 6: 380-415. [Paper](https://sociologicalscience.com/download/vol-6/may/SocSci_v6_380to415.pdf)
+    - Cheng, S., & Song, X. 2019. "Linked Lives, Linked Trajectories: Intergenerational Association of Intragenerational Income Mobility", American Sociological Review, 84(6), 1037-1068. [Paper](readings/chengsong_2019.pdf) 
+    - Ian Lundberg. 2020. "Does Opportunity Skip Generations? Reassessing Evidence From Sibling and Cousin Correlations", Demography 1; 57 (4): 1193–1213. [Paper](readings/lundberg_2020.pdf)
 
 3. **Week 3: Critics to the usual**
     - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115.
