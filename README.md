@@ -4,7 +4,7 @@
 Este repositorio contiene el material del curso SOL3016 Estratificación Social, dictado el primer semestre de 2024 a estudiantes de postgrado del Departamento de Sociología de la Universidad Católica de Chile. Para mayores detalles ver el [`[programa]`](files/syllabus.pdf) del curso.
 
 
-![ineq](files/ggatsby.png)
+![ggatsby](files/ggatsby.png)
 
 ---
 
