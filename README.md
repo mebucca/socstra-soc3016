@@ -18,27 +18,27 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
     - Cheng, S., & Song, X. 2019. "Linked Lives, Linked Trajectories: Intergenerational Association of Intragenerational Income Mobility", American Sociological Review, 84(6), 1037-1068. [Paper](readings/chengsong_2019.pdf) 
     - Ian Lundberg. 2020. "Does Opportunity Skip Generations? Reassessing Evidence From Sibling and Cousin Correlations", Demography 1; 57 (4): 1193–1213. [Paper](readings/lundberg_2020.pdf)
 
-3. **Week 3: Critics to the usual**
+3. **Week 3: Limitaciones y Desafíos**
     - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115.
     - Zhou, X. 2019. "Equalization or Selection? Reassessing the Meritocratic Power of a College Degree in Intergenerational Income Mobility". American Sociological Review, 84(3), 459-485.
     - Engzell, P., & Mood, C. 2023. "Understanding Patterns and Trends in Income Mobility through Multiverse Analysis", American Sociological Review, 88(4), 600-626.
 
-4. **Week 4: Mobility in the long run**
+4. **Week 4: Movilidad en el largo plazo**
     - Song, X., Massey, C. G., Rolf, K. A., Ferrie, J. P., Rothbaum, J. L., & Xie, Y. 2020. "Long-term decline in intergenerational mobility in the United States since the 1850s". Proceedings of the National Academy of Sciences of the United States of America, 117(1).
     - Clark G. 2023. "The inheritance of social status: England, 1600 to 2022". Proceedings of the National Academy of Sciences of the United States of America, 120(27).
     - Wen, F., Wang, E. H., & Hout, M. 2024. "Social mobility in the Tang Dynasty as the Imperial Examination rose and aristocratic family pedigree declined", 618-907 CE. Proceedings of the National Academy of Sciences of the United States of America, 121(4).
 
-5. **Week 5: Mobility Networks**
+5. **Week 5: Redes de Movilidad**
     - Villarreal, Andrés. 2020. “The U.S. Occupational Structure: A Social Network Approach.” Sociological Science 7: 187-221.
     - Cheng, Siwei & Park, Barum. 2020. "Flows and Boundaries: A Network Approach to Studying Occupational Mobility in the Labor Market. American Journal of Sociology". 126. 577-631. 10.1086/712406.
     - Lin, K. H., & Hung, K. 2022. "The Network Structure of Occupations: Fragmentation, Differentiation, and Contagion". AJS; American journal of sociology, 127(5), 1551–1601.
 
-6. **Week 6: Mobility and Sociogenomics**
+6. **Week 6: Movilidad y Sociogenomics**
     - Belsky, D. W., Domingue, B. W., Wedow, R., Arseneault, L., Boardman, J. D., Caspi, A., Conley, D., Fletcher, J. M., Freese, J., Herd, P., Moffitt, T. E., Poulton, R., Sicinski, K., Wertz, J., & Harris, K. M. 2018. "Genetic analysis of social-class mobility in five longitudinal studies". Proceedings of the National Academy of Sciences of the United States of America, 115(31).
     - Engzell, Per & Tropf, Felix. 2019. "Heritability of education rises with intergenerational mobility". Proceedings of the National Academy of Sciences. 116.
     - Hannu Lahtinen, Kaarina Korhonen, Pekka Martikainen, Tim Morris. 2023. "Polygenic Prediction of Education and Its Role in the Intergenerational Transmission of Education: Cohort Changes Among Finnish Men and Women Born in 1925–1989". Demography; 60 (5): 1523–1547.
 
-7. **Week 7: Mobility Effects**
+7. **Week 7: Effectos de la Movilidad**
     - Zang, E., Sobel, M. E., & Luo, L. 2023. "The mobility effects hypothesis: Methods and applications". Social science research, 110.
     - Wei, L., & Xie, Y. 2022 (preprint). "Social Mobility as Causal Intervention".
     - Breen, Richard, and John Ermisch. 2024. “The Effects of Social Mobility.” Sociological Science 11: 467-488.
