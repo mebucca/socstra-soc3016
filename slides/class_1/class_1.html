@@ -4,7 +4,7 @@
     <title>Frontiers in Social Mobility Research</title>
     <meta charset="utf-8" />
     <meta name="author" content="  Mauricio Bucca   github.com/mebucca   mebucca@uc.cl" />
-    <script src="libs/header-attrs-2.26/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.23/header-attrs.js"></script>
     <link rel="stylesheet" href="gentle-r.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -22,7 +22,7 @@ class: center, middle, inverse, title-slide
 ### <br> Mauricio Bucca <br> <a href="https://github.com/mebucca">github.com/mebucca</a> <br> <a href="mailto:mebucca@uc.cl" class="email">mebucca@uc.cl</a>
 ]
 .date[
-### 07 May, 2024
+### 08 May, 2024
 ]
 
 ---
@@ -31,36 +31,43 @@ class: inverse, center, middle
 
 
 
-#Distribución Muestral
+# ¿Qué entendemos por movilidad social?
 
 
 ---
 class: center, middle
 
 
+
 ![ad](am_dream.jpeg)
 
 
 ---
-## Confusiones comunes sobre movilidad social en discurso público
+## Nociones recurrentes en discurso público
 
 &lt;br&gt;
 &lt;br&gt;
 --
 
-- Movilidad social = movilidad social ascendente, American Dream, Land of Opportunity, 'rags-to-riches'  
+- Movilidad social ascendente
 
 &lt;br&gt;
 --
 
-- Movilidad social para todos
+- "American Dream", movilidad ascendente larga ("rags-to-riches")  
+
+&lt;br&gt;
+--
+
+- Movilidad social para todos, "Land of Opportunity"
 
 &lt;br&gt;
 --
 
 &lt;br&gt;
 --
-- (más sutil) Movilidad social = igualdad de oportunidades, meritocracia. 
+
+- (más sutil)  igualdad de oportunidades, meritocracia. 
 
   - Movilidad como alternativa a desigualdad 
 
@@ -75,6 +82,8 @@ class: inverse, center, middle
 
 &lt;br&gt;
 &lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
 --
 
   - .bold[Movilidad absoluta:] comparación con respecto a posición de los padres (ascendente,inmovil, descendente): quién se mueve, cuánto y hacia donde. 
@@ -86,7 +95,7 @@ class: inverse, center, middle
 
 
 ---
-### Sociedad A
+## Sociedad A
 
 .pull-left[
 
@@ -114,7 +123,7 @@ class: inverse, center, middle
 ]
 
 ---
-### Sociedad B
+## Sociedad B
 
 .pull-left[
 
@@ -162,6 +171,244 @@ class: inverse, center, middle
 - Posición política, etc. 
 
 
+
+---
+class: inverse, center, middle
+
+# Medidas de movilidad entre clases
+## Modelos log-lineales (varias topologías)
+
+---
+# Esquemas de clase
+
+--
+
+&lt;br&gt;
+.pull-left[
+![marx](https://arboldelademocracia.cuaieed.unam.mx/wp-content/uploads/2022/05/ADD_028-KARL-MARX-min.png)
+]
+
+--
+
+.pull-right[
+![class](classes.png)
+]
+
+
+---
+# Tablas de movilidad
+
+
+--
+
+.pull-left[
+.bold[Recuentos]
+
+```
+## USA
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm
+##   UpNM 1275 1159  666
+##   LoM   272 2046 1632
+##   Farm   17   52  646
+```
+
+```
+## UK
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm
+##   UpNM  474  601   76
+##   LoM   124 1789  295
+##   Farm   11   37  191
+```
+
+]
+
+--
+
+.pull-right[
+.bold[Probabilidades]
+
+```
+## USA
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm  Sum
+##   UpNM 0.16 0.15 0.09 0.40
+##   LoM  0.04 0.26 0.21 0.51
+##   Farm 0.00 0.01 0.08 0.09
+##   Sum  0.20 0.42 0.38 1.00
+```
+
+```
+## UK
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm  Sum
+##   UpNM 0.13 0.17 0.02 0.32
+##   LoM  0.03 0.50 0.08 0.61
+##   Farm 0.00 0.01 0.05 0.07
+##   Sum  0.17 0.67 0.16 1.00
+```
+
+]
+
+
+---
+## Tablas de movilidad
+
+
+.pull-left[
+.bold[Probabilidades]
+
+```
+## USA
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm  Sum
+##   UpNM 0.16 0.15 0.09 0.40
+##   LoM  0.04 0.26 0.21 0.51
+##   Farm 0.00 0.01 0.08 0.09
+##   Sum  0.20 0.42 0.38 1.00
+```
+
+```
+## UK
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm  Sum
+##   UpNM 0.13 0.17 0.02 0.32
+##   LoM  0.03 0.50 0.08 0.61
+##   Farm 0.00 0.01 0.05 0.07
+##   Sum  0.17 0.67 0.16 1.00
+```
+
+]
+
+--
+
+.pull-left[
+.bold[Margins-free]
+
+```
+## USA
+```
+
+```
+##       Father
+## Son      UpNM    LoM   Farm
+##   UpNM  37.59  -6.63 -24.33
+##   LoM  -29.64  17.90   6.29
+##   Farm -12.43 -19.72  30.33
+```
+
+```
+## UK
+```
+
+```
+##       Father
+## Son      UpNM    LoM   Farm
+##   UpNM  26.61 -13.38 -10.22
+##   LoM  -22.80  21.89  -4.70
+##   Farm  -5.26 -17.75  28.34
+```
+
+]
+
+---
+## Modelos log-lineales para tablas de movilidad
+
+&lt;br&gt;
+
+.bold[Modelo Saturado:]
+
+
+.pull-left[
+`$$\log(\mu_{ij}) = \lambda + \lambda_i^X + \lambda_j^Y + \lambda_{ij}^{XY}$$`
+]
+
+.pull-right[
+
+|   | Y=1 | Y=2 | ... | Y=j |
+|---|-----|-----|-----|-----|
+| X=1 | `\(\mu_{11}\)` | `\(\mu_{12}\)` | ... | `\(\mu_{1j}\)` |
+| X=2 | `\(\mu_{21}\)` | `\(\mu_{22}\)` | ... | `\(\mu_{2j}\)` |
+| ... | ... | ... | ... | ... |
+| X=i | `\(\mu_{i1}\)` | `\(\mu_{i2}\)` | ... | `\(\mu_{ij}\)` |
+
+]
+
+&lt;br&gt;
+
+Donde,
+
+- `\(\mu_{ij}\)` es el recuento esperado para la celda en el nivel `\(i\)` de la variable `\(X\)` y el nivel `\(j\)` de la variable `\(Y\)`.
+- `\(\lambda_i^X\)` es el efecto del nivel `\(i\)` de `\(X\)`.
+- `\(\lambda_j^Y\)` es el efecto del nivel `\(j\)` de `\(Y\)`.
+- `\(\lambda_{ij}^{XY}\)` representa interacción entre `\(X_i\)` y `\(Y_j\)`.
+- `\(\lambda\)`'s corresponden a odd-ratios
+
+
+---
+## Modelos log-lineales para tablas de movilidad
+
+.bold[Patrón de movilidad] (topologias). Ejemplos:
+
+
+.pull-left[
+
+|   | Y=1 | Y=2 | ... | Y=j |
+|---|-----|-----|-----|-----|
+| X=1 | 1 | 0 | ... | 0 |
+| X=2 | 0 | 1 | ... | 0 |
+| ... | ... | ... | 1 | ... |
+| X=i | 0 | 0 | ... | 1 |
+
+
+]
+.pull-right[
+
+|   | Y=1 | Y=2 | ... | Y=j |
+|---|-----|-----|-----|-----|
+| X=1 | 1 | 0 | ... | 0 |
+| X=2 | 0 | 2 | ... | 0 |
+| ... | ... | ... | 3 | ... |
+| X=i | 0 | 0 | ... | i |
+
+]
+
+&lt;br&gt;
+--
+
+.center[
+&lt;img src="gof.png" style="width: 50%;" alt="gof"&gt;
+]
+
+---
+## Modelos log-lineales para tablas de movilidad
+
+.bold[Patrón y fuerza de la asociación]. Ejemplo:
+
+
+.center[
+![loglinear](https://journals.sagepub.com/cms/10.1177/2378023119899219/asset/images/large/10.1177_2378023119899219-fig1.jpeg)
+]
+
 ---
 class: inverse, center, middle
 
@@ -201,21 +448,21 @@ class: inverse, center, middle
 
 .bold[Inmovilidad relativa perfecta]: `\(\beta=1\)`
 
-![](class_1_files/figure-html/unnamed-chunk-3-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
 .bold[Movilidad relativa perfecta]: `\(\beta=0\)`
 
-![](class_1_files/figure-html/unnamed-chunk-4-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
 .bold[Baja tasa de movilidad relativa]: `\(\beta=0.5\)`
 
-![](class_1_files/figure-html/unnamed-chunk-5-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
 
 ---
 ## Movilidad relativa y movilidad absoluta
@@ -224,14 +471,14 @@ class: inverse, center, middle
 
 `\(\beta\)` = 0.5 + crecimiento
 
-![](class_1_files/figure-html/unnamed-chunk-6-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
 
 `\(\beta\)` = 0.5 + decrecimiento
 
-![](class_1_files/figure-html/unnamed-chunk-7-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 ]
 
 

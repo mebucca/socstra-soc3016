@@ -22,7 +22,7 @@ class: inverse, center, middle
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(tidyverse)
 library(xaringanthemer)
-style_duo_accent(primary_color ="#FF6600", secondary_color ="#000000",
+style_duo_accent(primary_color = "#A52A2A" , secondary_color = "#50C878",
                  background_color = "#f8f7f3",
                  header_font_google = google_font("Archivo"),
                  text_font_google   = google_font("Inconsolata"), 
@@ -31,42 +31,47 @@ style_duo_accent(primary_color ="#FF6600", secondary_color ="#000000",
 )
 ```
 
-#Distribución Muestral
+# ¿Qué entendemos por movilidad social?
 
 
 ---
 class: center, middle
-```{r, echo=F, message=F, warning=F,  out.width = '300px'}
+```{r, echo=F, message=F, warning=F}
 library("tidyverse")
 library("ineq")
 
-theme_set(theme_bw())
-options(digits=3, scipen = 100)
 ```
+
 
 ![ad](am_dream.jpeg)
 
 
 ---
-## Confusiones comunes sobre movilidad social en discurso público
+## Nociones recurrentes en discurso público
 
 <br>
 <br>
 --
 
-- Movilidad social = movilidad social ascendente, American Dream, Land of Opportunity, 'rags-to-riches'  
+- Movilidad social ascendente
 
 <br>
 --
 
-- Movilidad social para todos
+- "American Dream", movilidad ascendente larga ("rags-to-riches")  
+
+<br>
+--
+
+- Movilidad social para todos, "Land of Opportunity"
 
 <br>
 --
 
 <br>
 --
-- (más sutil) Movilidad social = igualdad de oportunidades, meritocracia. 
+
+- (más sutil)  igualdad de oportunidades, meritocracia. 
 
   - Movilidad como alternativa a desigualdad 
 
@@ -81,6 +86,8 @@ class: inverse, center, middle
 
 <br>
 <br>
+<br>
+<br>
 --
 
   - .bold[Movilidad absoluta:] comparación con respecto a posición de los padres (ascendente,inmovil, descendente): quién se mueve, cuánto y hacia donde. 
@@ -92,7 +99,7 @@ class: inverse, center, middle
 
 
 ---
-### Sociedad A
+## Sociedad A
 
 .pull-left[
 
@@ -120,7 +127,7 @@ class: inverse, center, middle
 ]
 
 ---
-### Sociedad B
+## Sociedad B
 
 .pull-left[
 
@@ -167,6 +174,197 @@ class: inverse, center, middle
 
 - Posición política, etc. 
 
+
+
+---
+class: inverse, center, middle
+
+# Medidas de movilidad entre clases
+## Modelos log-lineales (varias topologías)
+
+---
+# Esquemas de clase
+
+--
+
+<br>
+.pull-left[
+![marx](https://arboldelademocracia.cuaieed.unam.mx/wp-content/uploads/2022/05/ADD_028-KARL-MARX-min.png)
+]
+
+--
+
+.pull-right[
+![class](classes.png)
+]
+
+
+---
+# Tablas de movilidad
+```{r, echo=F, message=FALSE}
+library("tidyverse")
+library("vcd")
+library("vcdExtra")
+
+data("Yamaguchi87")
+data <- Yamaguchi87
+ctable <- xtabs(Freq ~ Son + Father+Country, data=Yamaguchi87)
+ctable <- ctable[c(1,4,5),c(1,4,5),c(1,2)] 
+
+ctable_usa <- ctable[,,1]
+ctable_uk  <- ctable[,,2]
+
+
+```
+
+--
+
+.pull-left[
+.bold[Recuentos]
+```{r, echo=F, message=FALSE}
+#USA
+cat("USA\n")
+print(ctable_usa)
+
+#UK
+cat("UK\n")
+print(ctable_uk)
+```
+
+]
+
+--
+
+.pull-right[
+.bold[Probabilidades]
+```{r, echo=F, message=FALSE}
+#USA
+cat("USA\n")
+print(round(addmargins(prop.table(ctable_usa)),2))
+
+#UK
+cat("UK\n")
+print(round(addmargins(prop.table(ctable_uk)),2))
+```
+
+]
+
+
+---
+## Tablas de movilidad
+
+
+.pull-left[
+.bold[Probabilidades]
+```{r, echo=F, message=FALSE}
+#USA
+cat("USA\n")
+print(round(addmargins(prop.table(ctable_usa)),2))
+
+#UK
+cat("UK\n")
+print(round(addmargins(prop.table(ctable_uk)),2))
+```
+
+]
+
+--
+
+.pull-left[
+.bold[Margins-free]
+```{r, echo=F, message=FALSE}
+#USA
+cat("USA\n")
+chi2_usa <- chisq.test((ctable_usa))
+print(chi2_usa$stdres)
+
+#UK
+cat("UK\n")
+chi2_uk <- chisq.test((ctable_uk))
+print(chi2_uk$stdres)
+
+```
+
+]
+
+---
+## Modelos log-lineales para tablas de movilidad
+
+<br>
+
+.bold[Modelo Saturado:]
+
+
+.pull-left[
+$$\log(\mu_{ij}) = \lambda + \lambda_i^X + \lambda_j^Y + \lambda_{ij}^{XY}$$
+]
+
+.pull-right[
+
+|   | Y=1 | Y=2 | ... | Y=j |
+|---|-----|-----|-----|-----|
+| X=1 | $\mu_{11}$ | $\mu_{12}$ | ... | $\mu_{1j}$ |
+| X=2 | $\mu_{21}$ | $\mu_{22}$ | ... | $\mu_{2j}$ |
+| ... | ... | ... | ... | ... |
+| X=i | $\mu_{i1}$ | $\mu_{i2}$ | ... | $\mu_{ij}$ |
+
+]
+
+<br>
+
+Donde,
+
+- $\mu_{ij}$ es el recuento esperado para la celda en el nivel $i$ de la variable $X$ y el nivel $j$ de la variable $Y$.
+- $\lambda_i^X$ es el efecto del nivel $i$ de $X$.
+- $\lambda_j^Y$ es el efecto del nivel $j$ de $Y$.
+- $\lambda_{ij}^{XY}$ representa interacción entre $X_i$ y $Y_j$.
+- $\lambda$'s corresponden a odd-ratios
+
+
+---
+## Modelos log-lineales para tablas de movilidad
+
+.bold[Patrón de movilidad] (topologias). Ejemplos:
+
+
+.pull-left[
+
+|   | Y=1 | Y=2 | ... | Y=j |
+|---|-----|-----|-----|-----|
+| X=1 | 1 | 0 | ... | 0 |
+| X=2 | 0 | 1 | ... | 0 |
+| ... | ... | ... | 1 | ... |
+| X=i | 0 | 0 | ... | 1 |
+
+
+]
+.pull-right[
+
+|   | Y=1 | Y=2 | ... | Y=j |
+|---|-----|-----|-----|-----|
+| X=1 | 1 | 0 | ... | 0 |
+| X=2 | 0 | 2 | ... | 0 |
+| ... | ... | ... | 3 | ... |
+| X=i | 0 | 0 | ... | i |
+
+]
+
+<br>
+--
+
+.center[
+<img src="gof.png" style="width: 50%;" alt="gof">
+]
+
+---
+## Modelos log-lineales para tablas de movilidad
+
+.bold[Patrón y fuerza de la asociación]. Ejemplo:
+
+
+.center[
+![loglinear](https://journals.sagepub.com/cms/10.1177/2378023119899219/asset/images/large/10.1177_2378023119899219-fig1.jpeg)
+]
 
 ---
 class: inverse, center, middle
