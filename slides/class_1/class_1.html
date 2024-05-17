@@ -4,7 +4,7 @@
     <title>Frontiers in Social Mobility Research</title>
     <meta charset="utf-8" />
     <meta name="author" content="  Mauricio Bucca   github.com/mebucca   mebucca@uc.cl" />
-    <script src="libs/header-attrs-2.23/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.26/header-attrs.js"></script>
     <link rel="stylesheet" href="gentle-r.css" type="text/css" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
@@ -61,8 +61,6 @@ class: center, middle
 
 - Movilidad social para todos, "Land of Opportunity"
 
-&lt;br&gt;
---
 
 &lt;br&gt;
 --
@@ -74,7 +72,7 @@ class: center, middle
 ---
 class: inverse, center, middle
 
-## Movilidad social/económica intergeneracional 
+## Movilidad social intergeneracional 
 
 
 ---
@@ -175,8 +173,7 @@ class: inverse, center, middle
 ---
 class: inverse, center, middle
 
-# Medidas de movilidad entre clases
-## Modelos log-lineales (varias topologías)
+# Movilidad Intergeneracional de Clases
 
 ---
 # Esquemas de clase
@@ -196,7 +193,8 @@ class: inverse, center, middle
 
 
 ---
-# Tablas de movilidad
+## Tablas de movilidad
+
 
 
 --
@@ -263,9 +261,8 @@ class: inverse, center, middle
 
 ]
 
-
 ---
-## Tablas de movilidad
+## Tablas de movilidad: movilidad absoluta 
 
 
 .pull-left[
@@ -301,8 +298,8 @@ class: inverse, center, middle
 
 --
 
-.pull-left[
-.bold[Margins-free]
+.pull-right[
+.bold[P(Destino | Origen)]
 
 ```
 ## USA
@@ -310,10 +307,11 @@ class: inverse, center, middle
 
 ```
 ##       Father
-## Son      UpNM    LoM   Farm
-##   UpNM  37.59  -6.63 -24.33
-##   LoM  -29.64  17.90   6.29
-##   Farm -12.43 -19.72  30.33
+## Son    UpNM  LoM Farm
+##   UpNM 0.82 0.36 0.23
+##   LoM  0.17 0.63 0.55
+##   Farm 0.01 0.02 0.22
+##   Sum  1.00 1.00 1.00
 ```
 
 ```
@@ -322,10 +320,80 @@ class: inverse, center, middle
 
 ```
 ##       Father
-## Son      UpNM    LoM   Farm
-##   UpNM  26.61 -13.38 -10.22
-##   LoM  -22.80  21.89  -4.70
-##   Farm  -5.26 -17.75  28.34
+## Son    UpNM  LoM Farm
+##   UpNM 0.78 0.25 0.14
+##   LoM  0.20 0.74 0.52
+##   Farm 0.02 0.02 0.34
+##   Sum  1.00 1.00 1.00
+```
+
+]
+
+* Para hablar de movilidad "ascendente" o "descendente" debemos hacer supuestos sobre el ordenamiento de las clases (no siempre evidente).
+
+
+---
+## Tablas de movilidad: movilidad relativa (fluidez)
+
+
+.pull-left[
+.bold[Probabilidades]
+
+```
+## USA
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm  Sum
+##   UpNM 0.16 0.15 0.09 0.40
+##   LoM  0.04 0.26 0.21 0.51
+##   Farm 0.00 0.01 0.08 0.09
+##   Sum  0.20 0.42 0.38 1.00
+```
+
+```
+## UK
+```
+
+```
+##       Father
+## Son    UpNM  LoM Farm  Sum
+##   UpNM 0.13 0.17 0.02 0.32
+##   LoM  0.03 0.50 0.08 0.61
+##   Farm 0.00 0.01 0.05 0.07
+##   Sum  0.17 0.67 0.16 1.00
+```
+
+]
+
+--
+
+.pull-right[
+.bold[Margins-free]
+
+```
+## USA
+```
+
+```
+##       Father
+## Son          UpNM        LoM       Farm
+##   UpNM  37.590319  -6.634307 -24.325580
+##   LoM  -29.635560  17.902937   6.288612
+##   Farm -12.429771 -19.717299  30.329287
+```
+
+```
+## UK
+```
+
+```
+##       Father
+## Son          UpNM        LoM       Farm
+##   UpNM  26.610390 -13.379698 -10.217567
+##   LoM  -22.802360  21.894321  -4.704735
+##   Farm  -5.258359 -17.748019  28.337020
 ```
 
 ]
@@ -339,7 +407,8 @@ class: inverse, center, middle
 
 
 .pull-left[
-`$$\log(\mu_{ij}) = \lambda + \lambda_i^X + \lambda_j^Y + \lambda_{ij}^{XY}$$`
+`$$\log(\mu_{ij}) = \lambda + \underbrace{\lambda_i^X + \lambda_j^Y}_{\text{márgenes}} + \overbrace{\lambda_{ij}^{XY}}^{\text{fluidez}}$$`
+
 ]
 
 .pull-right[
@@ -367,7 +436,7 @@ Donde,
 ---
 ## Modelos log-lineales para tablas de movilidad
 
-.bold[Patrón de movilidad] (topologias). Ejemplos:
+.bold[Patrón de fluidez] (topologias). Ejemplos:
 
 
 .pull-left[
@@ -400,10 +469,7 @@ Donde,
 ]
 
 ---
-## Modelos log-lineales para tablas de movilidad
-
-.bold[Patrón y fuerza de la asociación]. Ejemplo:
-
+## Patrón y fuerza de la fluidez
 
 .center[
 ![loglinear](https://journals.sagepub.com/cms/10.1177/2378023119899219/asset/images/large/10.1177_2378023119899219-fig1.jpeg)
@@ -412,17 +478,22 @@ Donde,
 ---
 class: inverse, center, middle
 
-# Medidas de movilidad social relativa
-## Elasticidad intergeneracional de ingresos
+# Movilidad Intergeneracional de Ingresos
+
+---
+class: center, middle
+
+## Medición 1: Elasticidad intergeneracional de ingresos
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
-&lt;br&gt;
 
 `$$\log y^{\text{child}} = \alpha + \beta \log y^{\text{par}} + \varepsilon$$`
 &lt;br&gt;
 --
+
+- `\(\alpha\)` desplazamiento constante de ingresos entre una generación y la otra (ej. crecimiento)
 
 - `\(y^{\text{child}}\)` ingreso permanente hijo
 
@@ -430,39 +501,53 @@ class: inverse, center, middle
 
 - `\(\varepsilon\)` lo que el dinero de los padres no explica
 
-&lt;br&gt;
 --
 
-- `\(\beta = \frac{\%\Delta y^{\text{child}}}{\%\Delta y^{\text{par}}}\)` (elasticidad)
+- `\(IGE: \beta = \frac{\%\Delta y^{\text{child}}}{\%\Delta y^{\text{par}}}\)` (elasticidad, IGE)
 
 --
 
 - `\((1 - \beta)\)` es un índice de movilidad social.
 
+--
+
+Notar que:
+
+- `\(\text{IGE} = \underbrace{\rho}_{\text{correlación intergeneracional del ingresos}} \times  \frac{\sigma_{y^{\text{child}}}}{\sigma_{y^{\text{par}}}}\)`
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
 
 
+```
+## 
+## Attaching package: 'cowplot'
+```
+
+```
+## The following object is masked from 'package:lubridate':
+## 
+##     stamp
+```
 
 .bold[Inmovilidad relativa perfecta]: `\(\beta=1\)`
 
-![](class_1_files/figure-html/unnamed-chunk-8-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
 .bold[Movilidad relativa perfecta]: `\(\beta=0\)`
 
-![](class_1_files/figure-html/unnamed-chunk-9-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
 .bold[Baja tasa de movilidad relativa]: `\(\beta=0.5\)`
 
-![](class_1_files/figure-html/unnamed-chunk-10-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
 
 ---
 ## Movilidad relativa y movilidad absoluta
@@ -471,19 +556,57 @@ class: inverse, center, middle
 
 `\(\beta\)` = 0.5 + crecimiento
 
-![](class_1_files/figure-html/unnamed-chunk-11-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-13-1.png)&lt;!-- --&gt;
 ]
 
 .pull-right[
 
 `\(\beta\)` = 0.5 + decrecimiento
 
-![](class_1_files/figure-html/unnamed-chunk-12-1.png)&lt;!-- --&gt;
+![](class_1_files/figure-html/unnamed-chunk-14-1.png)&lt;!-- --&gt;
+]
+
+---
+## Elasticidad intergeneracional de ingresos: ventajas y limitaciones
+
+.pull-left[
+![gatsby](https://milescorak.com/wp-content/uploads/2017/06/great-gatsby-curve-22-countries-for-world-bank.png)
+]
+
+--
+
+.pull-right[
+
+- Simple y comparable
+
+- No captura patrones, sólo nivel
+
+
+]
+
+---
+class: center, middle
+
+## Medición 2: Correlaciones entre herman@s
+
+---
+## Correlaciones entre herman@s
+
+.center[
+![botero](botero.jpeg)
+]
+
+---
+## Correlaciones entre herman@s
+
+.center[
+![](class_1_files/figure-html/unnamed-chunk-15-1.png)&lt;!-- --&gt;
+
 ]
 
 
 ---
-##Correlaciones entre hermanos
+##Correlaciones entre herman@s
 
 &lt;br&gt;
 .bold[Intuición]:
@@ -491,11 +614,11 @@ class: inverse, center, middle
 --
 &lt;br&gt;
 
-- Hermanos comparten genes y ambiente (por ejemplo, familia, escuela, barrio).
+- herman@s comparten genes y ambiente (por ejemplo, familia, escuela, barrio).
 
 --
 
-- Si ambiente y factores genéticos son importantes para la obtención de resultados socioeconómico, los hermanos obtendrían resultados similares entre sí.
+- Si ambiente y factores genéticos son importantes para la obtención de resultados socioeconómico, los herman@s obtendrían resultados similares entre sí.
 
 --
 
@@ -503,7 +626,7 @@ class: inverse, center, middle
 
 
 ---
-## Correlaciones entre hermanos
+## Correlaciones entre herman@s
 
 `$$y_{ij} = \underbrace{a_{j}}_{\text{componente familiar}} + \underbrace{\mu_{ij}}_{\text{componente idiosincrático}}$$`
 &lt;br&gt;
@@ -518,20 +641,34 @@ class: inverse, center, middle
 &lt;br&gt;
 --
 
-- Correlación entre hermanos proporciona un límite superior para la influencia intergeneracional combinada de los factores genéticos y ambientales.
+- Correlación entre herman@s proporciona un límite superior para la influencia intergeneracional combinada de los factores genéticos y ambientales.
 
 - Generalmente arroja un mejor poder predictivo que la IGE.
 
-- *Limitaciones
 
 ---
-## Otras medidas importantes
+##  Correlaciones entre herman@s: ventajas y limitaciones
 
 
-- Modelos log-lineales para tablas de contigencia cross-clasificando clase social del origen y denstino.
 
-- Matrices de transiciones 
+.pull-left[
+![sibcor](sibcor.png)
+]
 
+--
+
+.pull-right[
+
+- Simple y comparable
+
+- No captura patrones, sólo nivel
+
+- Asume que hijos experimentan mismos padres y entorno
+
+- Asume que factores no compartidos son idiosincráticos
+
+
+]
 
 
 ---
