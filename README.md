@@ -19,7 +19,7 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
     - Ian Lundberg. 2020. "Does Opportunity Skip Generations? Reassessing Evidence From Sibling and Cousin Correlations", Demography 1; 57 (4): 1193–1213. [Paper](readings/lundberg_2020.pdf)
 
 3. **Week 3: Limitaciones y Desafíos**
-    - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115. [Paper](readings/hout_2019.pdf) 
+    - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115. [Paper](readings/hout_2018.pdf) 
     - Zhou, X. 2019. "Equalization or Selection? Reassessing the Meritocratic Power of a College Degree in Intergenerational Income Mobility". American Sociological Review, 84(3), 459-485. [Paper](readings/zhou_2019.pdf) 
     - Engzell, P., & Mood, C. 2023. "Understanding Patterns and Trends in Income Mobility through Multiverse Analysis", American Sociological Review, 88(4), 600-626. [Paper](readings/engzell_2023.pdf) 
 
