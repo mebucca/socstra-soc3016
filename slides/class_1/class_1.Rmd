@@ -65,8 +65,6 @@ library("ineq")
 
 - Movilidad social para todos, "Land of Opportunity"
 
-<br>
---
 
 <br>
 --
@@ -78,7 +76,7 @@ library("ineq")
 ---
 class: inverse, center, middle
 
-## Movilidad social/económica intergeneracional 
+## Movilidad social intergeneracional 
 
 
 ---
@@ -179,8 +177,7 @@ class: inverse, center, middle
 ---
 class: inverse, center, middle
 
-# Medidas de movilidad entre clases
-## Modelos log-lineales (varias topologías)
+# Movilidad Intergeneracional de Clases
 
 ---
 # Esquemas de clase
@@ -200,7 +197,8 @@ class: inverse, center, middle
 
 
 ---
-# Tablas de movilidad
+## Tablas de movilidad
+
 ```{r, echo=F, message=FALSE}
 library("tidyverse")
 library("vcd")
@@ -249,9 +247,8 @@ print(round(addmargins(prop.table(ctable_uk)),2))
 
 ]
 
-
 ---
-## Tablas de movilidad
+## Tablas de movilidad: movilidad absoluta 
 
 
 .pull-left[
@@ -270,7 +267,45 @@ print(round(addmargins(prop.table(ctable_uk)),2))
 
 --
 
+.pull-right[
+.bold[P(Destino | Origen)]
+```{r, echo=F, message=FALSE}
+#USA
+cat("USA\n")
+print(round(addmargins(prop.table(ctable_usa,2),1),2))
+
+#UK
+cat("UK\n")
+print(round(addmargins(prop.table(ctable_uk,2),1),2))
+
+```
+
+]
+
+* Para hablar de movilidad "ascendente" o "descendente" debemos hacer supuestos sobre el ordenamiento de las clases (no siempre evidente).
+
+
+---
+## Tablas de movilidad: movilidad relativa (fluidez)
+
+
 .pull-left[
+.bold[Probabilidades]
+```{r, echo=F, message=FALSE}
+#USA
+cat("USA\n")
+print(round(addmargins(prop.table(ctable_usa)),2))
+
+#UK
+cat("UK\n")
+print(round(addmargins(prop.table(ctable_uk)),2))
+```
+
+]
+
+--
+
+.pull-right[
 .bold[Margins-free]
 ```{r, echo=F, message=FALSE}
 #USA
@@ -296,7 +331,8 @@ print(chi2_uk$stdres)
 
 
 .pull-left[
-$$\log(\mu_{ij}) = \lambda + \lambda_i^X + \lambda_j^Y + \lambda_{ij}^{XY}$$
+$$\log(\mu_{ij}) = \lambda + \underbrace{\lambda_i^X + \lambda_j^Y}_{\text{márgenes}} + \overbrace{\lambda_{ij}^{XY}}^{\text{fluidez}}$$
+
 ]
 
 .pull-right[
@@ -324,7 +360,7 @@ Donde,
 ---
 ## Modelos log-lineales para tablas de movilidad
 
-.bold[Patrón de movilidad] (topologias). Ejemplos:
+.bold[Patrón de fluidez] (topologias). Ejemplos:
 
 
 .pull-left[
@@ -357,10 +393,7 @@ Donde,
 ]
 
 ---
-## Modelos log-lineales para tablas de movilidad
-
-.bold[Patrón y fuerza de la asociación]. Ejemplo:
-
+## Patrón y fuerza de la fluidez
 
 .center[
 ![loglinear](https://journals.sagepub.com/cms/10.1177/2378023119899219/asset/images/large/10.1177_2378023119899219-fig1.jpeg)
@@ -369,17 +402,22 @@ Donde,
 ---
 class: inverse, center, middle
 
-# Medidas de movilidad social relativa
-## Elasticidad intergeneracional de ingresos
+# Movilidad Intergeneracional de Ingresos
+
+---
+class: center, middle
+
+## Medición 1: Elasticidad intergeneracional de ingresos
 
 ---
 ## Elasticidad intergeneracional de ingresos
 
-<br>
 
 $$\log y^{\text{child}} = \alpha + \beta \log y^{\text{par}} + \varepsilon$$
 <br>
 --
+
+- $\alpha$ desplazamiento constante de ingresos entre una generación y la otra (ej. crecimiento)
 
 - $y^{\text{child}}$ ingreso permanente hijo
 
@@ -387,15 +425,19 @@ $$\log y^{\text{child}} = \alpha + \beta \log y^{\text{par}} + \varepsilon$$
 
 - $\varepsilon$ lo que el dinero de los padres no explica
 
-<br>
 --
 
-- $\beta = \frac{\%\Delta y^{\text{child}}}{\%\Delta y^{\text{par}}}$ (elasticidad)
+- $IGE: \beta = \frac{\%\Delta y^{\text{child}}}{\%\Delta y^{\text{par}}}$ (elasticidad, IGE)
 
 --
 
 - $(1 - \beta)$ es un índice de movilidad social.
 
+--
+
+Notar que:
+
+- $\text{IGE} = \underbrace{\rho}_{\text{correlación intergeneracional del ingresos}} \times  \frac{\sigma_{y^{\text{child}}}}{\sigma_{y^{\text{par}}}}$
 
 ---
 ## Elasticidad intergeneracional de ingresos
@@ -418,10 +460,19 @@ logx = log(x)
 
 ```{r, echo=FALSE, fig.height=4, fig.width=7, message=FALSE, warning=FALSE}
 logy = 0 + 1*logx + rnorm(n,0,1/2)
-data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,1,0), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
+data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,"Ascendente","Descendente"), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
 
-data %>% ggplot(aes(x=x,y=y, colour=mob)) + geom_point(alpha=0.07) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
-colour=NULL) + theme(legend.position = "none")
+data %>% ggplot(aes(x=x,y=y)) + geom_point(aes(colour=mob),alpha=0.7) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
+colour=NULL)   +
+theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 22),
+    axis.text.x = element_text(size = 22),
+    axis.title.y = element_text(size = 24),
+    axis.title.x = element_text(size = 24),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1)
+  )
+
 ```
 
 ---
@@ -431,10 +482,19 @@ colour=NULL) + theme(legend.position = "none")
 
 ```{r, echo=FALSE, fig.height=4, fig.width=7, message=FALSE, warning=FALSE}
 logy = 0 + 0*logx + rnorm(n,0,1/2)
-data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,1,0), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
+data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,"Ascendente","Descendente"), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
 
-data %>% ggplot(aes(x=x,y=y, colour=mob)) + geom_point(alpha=0.07) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
-colour=NULL) + theme(legend.position = "none")
+data %>% ggplot(aes(x=x,y=y)) + geom_point(aes(colour=mob),alpha=0.7) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
+colour=NULL) +
+    theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 22),
+    axis.text.x = element_text(size = 22),
+    axis.title.y = element_text(size = 24),
+    axis.title.x = element_text(size = 24),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1)
+  )
+
 ```
 
 ---
@@ -444,10 +504,19 @@ colour=NULL) + theme(legend.position = "none")
 
 ```{r, echo=FALSE, fig.height=4, fig.width=7, message=FALSE, warning=FALSE}
 logy = 0 + 0.5*logx + rnorm(n,0,1/2)
-data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,1,0), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
+data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,"Ascendente","Descendente"), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
 
-data %>% ggplot(aes(x=x,y=y, colour=mob)) + geom_point(alpha=0.07) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
-colour=NULL) + theme(legend.position = "none")
+data %>% ggplot(aes(x=x,y=y)) + geom_point(aes(colour=mob),alpha=0.7) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
+colour=NULL) +
+    theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 22),
+    axis.text.x = element_text(size = 22),
+    axis.title.y = element_text(size = 24),
+    axis.title.x = element_text(size = 24),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1)
+  )
+
 ```
 
 ---
@@ -459,10 +528,19 @@ $\beta$ = 0.5 + crecimiento
 
 ```{r, echo=FALSE, fig.height=4, fig.width=7, message=FALSE, warning=FALSE}
 logy = 2 + 0.5*logx + rnorm(n,0,1/2)
-data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,1,0), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
+data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,"Ascendente","Descendente"), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
 
-data %>% ggplot(aes(x=x,y=y, colour=mob)) + geom_point(alpha=0.07) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
-colour=NULL) + theme(legend.position = "none")
+data %>% ggplot(aes(x=x,y=y)) + geom_point(aes(colour=mob),alpha=0.7) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
+colour=NULL) +
+    theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 22),
+    axis.text.x = element_text(size = 22),
+    axis.title.y = element_text(size = 24),
+    axis.title.x = element_text(size = 24),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1)
+  )
+
 ```
 ]
 
@@ -472,16 +550,78 @@ $\beta$ = 0.5 + decrecimiento
 
 ```{r, echo=FALSE, fig.height=4, fig.width=7, message=FALSE, warning=FALSE}
 logy = -2 + 0.5*logx + rnorm(n,0,1/2)
-data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,1,0), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
+data <- tibble(x=logx, y=logy, z=round(x,0), mob=if_else(y>x,"Ascendente","Descendente"), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
 
-data %>% ggplot(aes(x=x,y=y, colour=mob)) + geom_point(alpha=0.07) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
-colour=NULL) + theme(legend.position = "none")
+data %>% ggplot(aes(x=x,y=y)) + geom_point(aes(colour=mob),alpha=0.7) + geom_smooth(method = "lm", se = FALSE) + ylim(-4,4) + xlim(-4,4) + labs(x="Ingreso permanente hijos (log)", y="Ingreso permanente hijos (log)", subtitle="Elasticidad intergeneracional de ingresos (IGE)",
+colour=NULL) +
+    theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 22),
+    axis.text.x = element_text(size = 22),
+    axis.title.y = element_text(size = 24),
+    axis.title.x = element_text(size = 24),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1)
+  )
+
 ```
+]
+
+---
+## Elasticidad intergeneracional de ingresos: ventajas y limitaciones
+
+.pull-left[
+![gatsby](https://milescorak.com/wp-content/uploads/2017/06/great-gatsby-curve-22-countries-for-world-bank.png)
+]
+
+--
+
+.pull-right[
+
+- Simple y comparable
+
+- No captura patrones, sólo nivel
+
+
+]
+
+---
+class: center, middle
+
+## Medición 2: Correlaciones entre herman@s
+
+---
+## Correlaciones entre herman@s
+
+.center[
+![botero](botero.jpeg)
+]
+
+---
+## Correlaciones entre herman@s
+
+.center[
+```{r, warning=F, message=F, echo=F}
+set.seed(839911)
+data <- tibble(x=logx, y=logy, z=round(x,0), zz=ifelse(z==-4,1,ifelse(z==4,2,0))) 
+
+data %>% ggplot(aes(x=y)) + geom_density(fill="grey", alpha=0.3) + ylim(0,1.5) +  geom_point(aes(x=x, y=0,group=factor(zz),colour=factor(zz)), position = jitter, alpha=0.9, size=3) + scale_colour_manual(values = c("1" = "red","2"="blue","0"=NA)) + 
+  labs(y="", x="Permanent log-income", colour="Familias") +
+    theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 22),
+    axis.text.x = element_text(size = 22),
+    axis.title.y = element_text(size = 24),
+    axis.title.x = element_text(size = 24),
+    panel.border = element_rect(color = "black", fill = NA, linewidth = 1)
+  )
+
+```
+
 ]
 
 
 ---
-##Correlaciones entre hermanos
+##Correlaciones entre herman@s
 
 <br>
 .bold[Intuición]:
@@ -489,11 +629,11 @@ colour=NULL) + theme(legend.position = "none")
 --
 <br>
 
-- Hermanos comparten genes y ambiente (por ejemplo, familia, escuela, barrio).
+- herman@s comparten genes y ambiente (por ejemplo, familia, escuela, barrio).
 
 --
 
-- Si ambiente y factores genéticos son importantes para la obtención de resultados socioeconómico, los hermanos obtendrían resultados similares entre sí.
+- Si ambiente y factores genéticos son importantes para la obtención de resultados socioeconómico, los herman@s obtendrían resultados similares entre sí.
 
 --
 
@@ -501,7 +641,7 @@ colour=NULL) + theme(legend.position = "none")
 
 
 ---
-## Correlaciones entre hermanos
+## Correlaciones entre herman@s
 
 $$y_{ij} = \underbrace{a_{j}}_{\text{componente familiar}} + \underbrace{\mu_{ij}}_{\text{componente idiosincrático}}$$
 <br>
@@ -516,20 +656,34 @@ $$\rho = \frac{\sigma^{2}_{a}}{\sigma^{2}_{a}+\sigma^{2}_{\mu}}$$
 <br>
 --
 
-- Correlación entre hermanos proporciona un límite superior para la influencia intergeneracional combinada de los factores genéticos y ambientales.
+- Correlación entre herman@s proporciona un límite superior para la influencia intergeneracional combinada de los factores genéticos y ambientales.
 
 - Generalmente arroja un mejor poder predictivo que la IGE.
 
-- *Limitaciones
 
 ---
-## Otras medidas importantes
+##  Correlaciones entre herman@s: ventajas y limitaciones
 
 
-- Modelos log-lineales para tablas de contigencia cross-clasificando clase social del origen y denstino.
 
-- Matrices de transiciones 
+.pull-left[
+![sibcor](sibcor.png)
+]
 
+--
+
+.pull-right[
+
+- Simple y comparable
+
+- No captura patrones, sólo nivel
+
+- Asume que hijos experimentan mismos padres y entorno
+
+- Asume que factores no compartidos son idiosincráticos
+
+
+]
 
 
 ---
