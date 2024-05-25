@@ -24,9 +24,9 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
     - Engzell, P., & Mood, C. 2023. "Understanding Patterns and Trends in Income Mobility through Multiverse Analysis", American Sociological Review, 88(4), 600-626. [Paper](readings/engzell_2023.pdf) 
 
 4. **Week 4: Movilidad en el largo plazo**
-    - Song, X., Massey, C. G., Rolf, K. A., Ferrie, J. P., Rothbaum, J. L., & Xie, Y. 2020. "Long-term decline in intergenerational mobility in the United States since the 1850s". Proceedings of the National Academy of Sciences of the United States of America, 117(1).
-    - Clark G. 2023. "The inheritance of social status: England, 1600 to 2022". Proceedings of the National Academy of Sciences of the United States of America, 120(27).
-    - Wen, F., Wang, E. H., & Hout, M. 2024. "Social mobility in the Tang Dynasty as the Imperial Examination rose and aristocratic family pedigree declined", 618-907 CE. Proceedings of the National Academy of Sciences of the United States of America, 121(4).
+    - Song, X., Massey, C. G., Rolf, K. A., Ferrie, J. P., Rothbaum, J. L., & Xie, Y. 2020. "Long-term decline in intergenerational mobility in the United States since the 1850s". Proceedings of the National Academy of Sciences of the United States of America, 117(1). [Paper](readings/song_2020.pdf) 
+    - Clark G. 2023. "The inheritance of social status: England, 1600 to 2022". Proceedings of the National Academy of Sciences of the United States of America, 120(27). [Paper](readings/clark_2023.pdf)
+    - Wen, F., Wang, E. H., & Hout, M. 2024. "Social mobility in the Tang Dynasty as the Imperial Examination rose and aristocratic family pedigree declined", 618-907 CE. Proceedings of the National Academy of Sciences of the United States of America, 121(4). [Paper](readings/wen_2024.pdf)
 
 5. **Week 5: Redes de Movilidad**
     - Villarreal, Andrés. 2020. “The U.S. Occupational Structure: A Social Network Approach.” Sociological Science 7: 187-221.
