@@ -19,14 +19,14 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
     - Ian Lundberg. 2020. "Does Opportunity Skip Generations? Reassessing Evidence From Sibling and Cousin Correlations", Demography 1; 57 (4): 1193–1213. [Paper](readings/lundberg_2020.pdf)
 
 3. **Week 3: Limitaciones y Desafíos**
-    - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115. [Paper](readings/hout_2019.pdf) 
+    - Hout, Michael. 2018. "Americans’ occupational status reflects the status of both of their parents". Proceedings of the National Academy of Sciences. 115. [Paper](readings/hout_2018.pdf) 
     - Zhou, X. 2019. "Equalization or Selection? Reassessing the Meritocratic Power of a College Degree in Intergenerational Income Mobility". American Sociological Review, 84(3), 459-485. [Paper](readings/zhou_2019.pdf) 
     - Engzell, P., & Mood, C. 2023. "Understanding Patterns and Trends in Income Mobility through Multiverse Analysis", American Sociological Review, 88(4), 600-626. [Paper](readings/engzell_2023.pdf) 
 
 4. **Week 4: Movilidad en el largo plazo**
-    - Song, X., Massey, C. G., Rolf, K. A., Ferrie, J. P., Rothbaum, J. L., & Xie, Y. 2020. "Long-term decline in intergenerational mobility in the United States since the 1850s". Proceedings of the National Academy of Sciences of the United States of America, 117(1).
-    - Clark G. 2023. "The inheritance of social status: England, 1600 to 2022". Proceedings of the National Academy of Sciences of the United States of America, 120(27).
-    - Wen, F., Wang, E. H., & Hout, M. 2024. "Social mobility in the Tang Dynasty as the Imperial Examination rose and aristocratic family pedigree declined", 618-907 CE. Proceedings of the National Academy of Sciences of the United States of America, 121(4).
+    - Song, X., Massey, C. G., Rolf, K. A., Ferrie, J. P., Rothbaum, J. L., & Xie, Y. 2020. "Long-term decline in intergenerational mobility in the United States since the 1850s". Proceedings of the National Academy of Sciences of the United States of America, 117(1). [Paper](readings/song_2020.pdf) 
+    - Clark G. 2023. "The inheritance of social status: England, 1600 to 2022". Proceedings of the National Academy of Sciences of the United States of America, 120(27). [Paper](readings/clark_2023.pdf)
+    - Wen, F., Wang, E. H., & Hout, M. 2024. "Social mobility in the Tang Dynasty as the Imperial Examination rose and aristocratic family pedigree declined", 618-907 CE. Proceedings of the National Academy of Sciences of the United States of America, 121(4). [Paper](readings/wen_2024.pdf)
 
 5. **Week 5: Redes de Movilidad**
     - Villarreal, Andrés. 2020. “The U.S. Occupational Structure: A Social Network Approach.” Sociological Science 7: 187-221.
