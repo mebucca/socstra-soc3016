@@ -34,9 +34,9 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
     - Hannu Lahtinen, Kaarina Korhonen, Pekka Martikainen, Tim Morris. 2023. "Polygenic Prediction of Education and Its Role in the Intergenerational Transmission of Education: Cohort Changes Among Finnish Men and Women Born in 1925–1989". Demography; 60 (5): 1523–1547. [Paper](readings/lahtinen_2023.pdf)
 
 6. **Week 6: Redes de Movilidad**
-    - Villarreal, Andrés. 2020. “The U.S. Occupational Structure: A Social Network Approach.” Sociological Science 7: 187-221.
-    - Cheng, Siwei & Park, Barum. 2020. "Flows and Boundaries: A Network Approach to Studying Occupational Mobility in the Labor Market. American Journal of Sociology". 126. 577-631. 10.1086/712406.
-    - Lin, K. H., & Hung, K. 2022. "The Network Structure of Occupations: Fragmentation, Differentiation, and Contagion". AJS; American journal of sociology, 127(5), 1551–1601.
+    - Villarreal, Andrés. 2020. “The U.S. Occupational Structure: A Social Network Approach.” Sociological Science 7: 187-221. [Paper](readings/villareal_2020.pdf)
+    - Cheng, Siwei & Park, Barum. 2020. "Flows and Boundaries: A Network Approach to Studying Occupational Mobility in the Labor Market. American Journal of Sociology". 126. 577-631. 10.1086/712406. [Paper](readings/cheng_2020.pdf)
+    - Lin, K. H., & Hung, K. 2022. "The Network Structure of Occupations: Fragmentation, Differentiation, and Contagion". AJS; American journal of sociology, 127(5), 1551–1601. [Paper](readings/lin_2022.pdf)
 
 
 7. **Week 7: Effectos de la Movilidad**
