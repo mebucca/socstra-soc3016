@@ -19,7 +19,7 @@ Este repositorio contiene el material del curso SOL3016 Estratificación Social,
 3. **Week 3: Movilidad Absoluta y Movilidad Relativa**
     - Chetty, Raj, David Grusky, Maximilian Hell, Nathaniel Hendren, Robert Manduca, and Jimmy Narang. 2017. "The Fading American Dream: Trends in Absolute Income Mobility Since 1940." *Science*, 356(6336). [Paper](https://www.science.org/doi/10.1126/science.aal4617)
     - Bloome, Deirdre, and Adelaida Opacic. 2024. "Absolute Income Mobility Obscures Marginalized Children's Disadvantages." *Proceedings of the National Academy of Sciences*, 121(7). [Paper](https://www.pnas.org/doi/10.1073/pnas.2321418121)
-    - Bucca, Mauricio. (pre-print). "Linking Absolute and Relative Mobility: A Tractable Framework, a Decomposition Method, and an Application to Black–White Mobility Differences." *Under Review*.
+    - Bucca, Mauricio. (pre-print). "Linking Absolute and Relative Mobility: A Tractable Framework, a Decomposition Method, and an Application to Black–White Mobility Differences." (readings/smr_draft.pdf)
 
 4. **Week 4: Movilidad en el Largo Plazo**
     - Clark, G. 2023. "The Inheritance of Social Status: England, 1600 to 2022." *Proceedings of the National Academy of Sciences of the United States of America*, 120(27). [Paper](readings/clark_2023.pdf)
