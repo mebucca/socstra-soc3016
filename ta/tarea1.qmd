@@ -1,0 +1,62 @@
+---
+title: "Tarea #1"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Contexto
+
+Al ejecutar el siguiente codigo se le entrega una base de datos simulada de ingresos laborales mensuales en pesos chilenos para padres e hijos observados entre las edades 40 y 45, a precios de 2026.
+
+*IMPORTANTE:* Uso de IA solo esta permitido para revisar la sintaxis del código, no para resolver los ejercicios. Cualquier uso de IA para resolver los ejercicios será considerado plagio y se aplicarán las sanciones correspondientes.
+
+```{r, echo=TRUE}
+library("tidyverse")
+set.seed(123)
+
+N <- 5000
+
+beta  <- 0.65
+alpha <- 4.5
+sigma_perm  <- 0.7
+sigma_trans <- 0.3
+
+
+y_p_perm_log <- rnorm(N, mean = log(700000), sd = sigma_perm)
+y_c_perm_log <- alpha + beta * y_p_perm_log + rnorm(N, 0, sigma_perm)
+
+
+ages <- 40:45
+
+gen_panel_clp <- function(y_perm_log, sigma_trans) {
+  sapply(ages, function(a) {
+    log_income <- y_perm_log + rnorm(length(y_perm_log), 0, sigma_trans)
+    exp(log_income)
+  })
+}
+
+Yp <- gen_panel_clp(y_p_perm_log, sigma_trans)
+Yc <- gen_panel_clp(y_c_perm_log, sigma_trans)
+
+colnames(Yp) <- paste0("parent_", ages)
+colnames(Yc) <- paste0("child_",  ages)
+
+df <- data.frame(id = 1:N, Yp, Yc)
+
+df %>% as_tibble()
+
+df %>% as_tibble() %>% ggplot(aes(x = y_p_perm_log, y = y_c_perm_log)) +
+  geom_point(alpha = 0.1, color="red") + 
+  labs(x = "log Ingreso permanente del padre", y = "lo Ingreso permanent del hijo") +
+  theme_minimal()
+```
+
+## Instrucciones
+
+1. Calcular e interpretar la elasticidad intergeneracional del ingresos permamentes entre padres e hijos. Ponga el resultado en contexto con la literatura sobre movilidad intergeneracional revisada en el curso.
+
+2. Calcular la probabilidad de experimentar movilidad absoluta ascendente ($y_{hijo} > y_{padre} \mid y_{padre}$) para hijos de padres que se encuentran por debajo de la mediana de ingresos de su generación y para aquellos cuyos padres se encuentran por sobre la mediana. Explique los resultados y la conexión con la elasticidad intergeneracional del ingreso (IGE) estimada en la pregunta 1. Ponga el resultado en contexto con la literatura sobre movilidad intergeneracional revisada en el curso.
+
