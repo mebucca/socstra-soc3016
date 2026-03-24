@@ -1,0 +1,202 @@
+---
+title: "Movilidad Intergeneracional de Ingresos: Simulación"
+date: today
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    code-fold: true
+    fig-width: 8
+    fig-height: 5
+    self-contained: true
+lang: es
+---
+
+# La Elasticidad Intergeneracional del Ingreso (IGE)
+
+
+La Elasticidad Intergeneracional del Ingreso (IGE) es la medida más utilizada para cuantificar la movilidad económica entre generaciones. Fue desarrollada y popularizada en la literatura académica por autores como Gary Solon (1992) y David Zimmerman (1992).
+
+El modelo estándar de la IGE se estima mediante la siguiente regresión log-log:
+
+$$\log(y_h^i) = \alpha + \beta \cdot \log(y_p^i) + \varepsilon^i$$
+
+donde:
+
+- $y_h^i$ es el ingreso del hijo (o hija) del hogar $i$ en la adultez
+- $y_p^i$ es el ingreso de los padres del hogar $i$, medido típicamente durante la niñez o adolescencia del hijo
+- $\alpha$ es una constante que refleja el nivel promedio de ingresos de la generación hije, independientemente de los padres
+- $\beta$ es el coeficiente de elasticidad intergeneracional, el parámetro central de interés
+- $\varepsilon^i$ es el término de error estocástico, que captura todo lo que afecta el ingreso del hijo más allá del ingreso parental (capital humano, redes sociales, esfuerzo, suerte, etc.)
+
+
+El coeficiente $\beta$ tiene una interpretación directa y poderosa:
+
+> Un valor de $\beta = 0.7$ significa que si los padres tienen un ingreso 1% por encima del promedio, se espera que sus hijos tengan un ingreso 0.7% por encima del promedio de su propia generación.
+
+Los casos extremos son igualmente informativos:
+
+| Valor de $\beta$ | Interpretación |
+|:-:|:--|
+| $\beta = 0$ | Movilidad perfecta: el ingreso de los padres no predice en absoluto el del hijo. La posición socioeconómica es completamente aleatoria entre generaciones. |
+| $\beta = 1$ | Inmovilidad perfecta: el ingreso relativo se transmite íntegramente de padres a hijos. La posición social es completamente hereditaria. |
+
+## El papel de $\varepsilon$
+
+El término de error $\varepsilon \sim \mathcal{N}(0, \sigma^2_\varepsilon)$ representa la dispersión alrededor del ingreso esperado (condicional en el ingreso de los padres). Su desviación estándar $\sigma_\varepsilon$ tiene una interpretación sustantiva:
+
+- $\sigma_\varepsilon$ pequeño implica que el ingreso parental es altamente predictivo: dado el ingreso de los padres, el rango de ingresos posibles para el hijo es estrecho. Esto ocurre en sociedades muy rígidas.
+- $\sigma_\varepsilon$ grande implica que hay mucha variación en los ingresos de los hijos con un mismo ingreso parental. Esto puede reflejar tanto mayor movilidad real como mayor incertidumbre económica.
+
+
+
+# Simulación: efectos de $\beta$ y $\sigma_\varepsilon$ sobre la movilidad
+
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+
+set.seed(42)
+n <- 10000
+
+# Generamos ingresos parentales uniformes entre $100 y $12,000
+y_p <- runif(n, 100, 12000)
+
+# Parámetros a variar
+betas  <- c(0.3, 0.6, 0.9)
+sigmas <- c(0.15, 0.85)
+
+beta_labels  <- c("0.3" = "β = 0.3 (Alta movilidad)",
+                   "0.6" = "β = 0.6 (Movilidad media)",
+                   "0.9" = "β = 0.9 (Baja movilidad)")
+
+sigma_labels <- c("0.15" = "σ_ε = 0.15 (Bajo ruido)",
+                   "0.85" = "σ_ε = 0.85 (Alto ruido)")
+
+# Construimos la grilla de simulaciones
+sim_data <- expand_grid(beta = betas, sigma = sigmas) %>%
+  mutate(data = map2(beta, sigma, function(b, s) {
+    e        <- rnorm(n, mean = 0, sd = s)
+    log_yh   <- 0 + b * log(y_p) + e
+    tibble(
+      log_yp  = log(y_p),
+      log_yh  = log_yh,
+      y_p     = y_p,
+      y_h     = exp(log_yh)
+    )
+  })) %>%
+  unnest(data) %>%
+  mutate(
+    beta_label  = beta_labels[as.character(beta)],
+    sigma_label = sigma_labels[as.character(sigma)],
+    beta_label  = factor(beta_label,  levels = beta_labels),
+    sigma_label = factor(sigma_label, levels = sigma_labels)
+  )
+```
+
+---
+
+## Escenario 1: Dispersión baja ($\sigma_\varepsilon = 0.15$) — el ingreso parental domina
+
+Cuando la dispersión del error es pequeña, la posición socioeconófica del hijo queda casi determinada por la de los padres. La nube de puntos es estrecha y la pendiente $\beta$ es el factor dominante.
+
+```{r}
+#| fig-cap: "Transmisión intergeneracional con baja dispersión del error. Cada panel muestra un nivel de β distinto."
+#| label: fig-baja-dispersion
+
+sim_data %>%
+  filter(sigma == 0.15) %>%
+  ggplot(aes(x = log_yp, y = log_yh)) +
+  geom_point(alpha = 0.05, size = 0.6, color = "#2c7bb6") +
+  geom_smooth(method = "lm", se = TRUE, color = "#d7191c", linewidth = 1) +
+  facet_wrap(~beta_label, ncol = 3) +
+  labs(
+    title    = "IGE con dispersión baja (σ_ε = 0.15)",
+    subtitle = "La pendiente β determina casi por completo la posición del hijo",
+    x        = "log(Ingreso de los padres)",
+    y        = "log(Ingreso del hijo)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    strip.text      = element_text(face = "bold"),
+    plot.title      = element_text(face = "bold"),
+    plot.subtitle   = element_text(color = "gray40")
+  )
+```
+
+Interpretación: Con $\sigma_\varepsilon = 0.15$, la nube de puntos es compacta. Cuando $\beta = 0.3$, incluso con poco ruido, un hijo de padres ricos solo tiene una ventaja moderada — la línea sube poco. Con $\beta = 0.9$, en cambio, casi toda la variación en el ingreso del hijo refleja la del padre: la sociedad es una "lotería hereditaria" con muy poco espacio para el talento o el esfuerzo individual.
+
+---
+
+## Escenario 2: Dispersión alta ($\sigma_\varepsilon = 0.85$) — el azar importa más
+
+Cuando aumentamos la dispersión del error, introducimos mayor incertidumbre. Incluso con un $\beta$ alto, ahora hay más hijos de padres pobres que "escapan" hacia arriba y más hijos de ricos que caen. La nube se ensancha.
+
+```{r}
+#| fig-cap: "Transmisión intergeneracional con alta dispersión del error."
+#| label: fig-alta-dispersion
+
+sim_data %>%
+  filter(sigma == 0.85) %>%
+  ggplot(aes(x = log_yp, y = log_yh)) +
+  geom_point(alpha = 0.05, size = 0.6, color = "#756bb1") +
+  geom_smooth(method = "lm", se = TRUE, color = "#d7191c", linewidth = 1) +
+  facet_wrap(~beta_label, ncol = 3) +
+  labs(
+    title    = "IGE con dispersión alta (σ_ε = 0.85)",
+    subtitle = "El ruido amplía el rango de ingresos posibles para cada nivel parental",
+    x        = "log(Ingreso de los padres)",
+    y        = "log(Ingreso del hijo)"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    strip.text      = element_text(face = "bold"),
+    plot.title      = element_text(face = "bold"),
+    plot.subtitle   = element_text(color = "gray40")
+  )
+```
+
+Interpretación: Con $\sigma_\varepsilon = 0.85$, hay más "ruido" en la transmisión. Incluso con $\beta = 0.9$, la nube de puntos es considerablemente más dispersa que en el escenario anterior. Esto representa sociedades donde factores como la educación pública de calidad, la suerte, o las redes sociales horizontales pueden cambiar de manera significativa la trayectoria de un individuo más allá de lo que predice el ingreso parental.
+
+
+---
+
+## Estimación del modelo por escenario
+
+Para cada combinación de parámetros, estimamos el modelo OLS y recuperamos el $\hat{\beta}$:
+
+```{r}
+#| tbl-cap: "Estimaciones OLS del coeficiente β por escenario de simulación"
+#| label: tbl-regresiones
+
+resultados <- sim_data %>%
+  group_by(beta, sigma, beta_label, sigma_label) %>%
+  summarise(
+    modelo      = list(lm(log_yh ~ log_yp)),
+    .groups     = "drop"
+  ) %>%
+  mutate(
+    beta_est    = map_dbl(modelo, ~ coef(.x)[["log_yp"]]),
+    beta_se     = map_dbl(modelo, ~ summary(.x)$coefficients["log_yp", "Std. Error"]),
+    r_squared   = map_dbl(modelo, ~ summary(.x)$r.squared)
+  ) %>%
+  select(beta_label, sigma_label, beta_verdadero = beta, beta_est, beta_se, r_squared)
+
+resultados %>%
+  mutate(across(where(is.numeric), ~ round(.x, 4))) %>%
+  rename(
+    "Escenario β"        = beta_label,
+    "Escenario σ_ε"      = sigma_label,
+    "β verdadero"        = beta_verdadero,
+    "β estimado"         = beta_est,
+    "Error estándar"     = beta_se,
+    "R²"                 = r_squared
+  ) %>%
+  knitr::kable(align = "lllcccc")
+```
+
+Observación clave sobre el $R^2$: Nótese cómo el $R^2$ cae drásticamente cuando $\sigma_\varepsilon$ aumenta. Con bajo ruido, el modelo explica más del 90% de la varianza del ingreso del hijo. Esto ilustra que el $R^2$ no mide la "fuerza" de la transmisión intergeneracional, sino la fracción de la varianza total que se debe al canal intergeneracional versus los factores idiosincráticos.
+
